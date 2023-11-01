@@ -262,17 +262,18 @@ Arguments:
 
 Successful Output:
 
-`[PLAN_NAME] is marked as completed.`
+`"[PLAN_NAME]" is marked as completed.`
 
 Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
-- Missing arguments: `Invalid syntax: Missing arguments. Syntax: complete-plan INDEX`
+- Empty index or index is not a positive non-zero integer: `Invalid command format!
+  complete-plan: Marks the plan as completed identified by the index number used in the displayed plan list.
+  Parameters: INDEX (must be a positive integer)
+  Example: complete-plan 1
 
-- Non-numeric index: `Index given is non-numeric. Syntax: complete-plan INDEX`
-
-- Not a valid index: `No plans at given index. Syntax: complete-plan INDEX`
+- Index given is out of bound: `No plans at given index.`
 
 ### Marking a Plan as Uncompleted : `uncomplete-plan`
 
@@ -289,17 +290,18 @@ Arguments:
 
 Successful Output:
 
-`Completed Plan: [PLAN_NAME]; Date Time: [DATE_TIME]; Friend: [FRIEND_NAME]}`
+`"[PLAN_NAME]" is marked as not completed.`
 
 Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
-- Missing arguments: `Invalid syntax: Missing arguments. Syntax: uncomplete-plan INDEX`
+- Empty index or index is not a positive non-zero integer: `Invalid command format!
+  uncomplete-plan: Marks the plan as not completed identified by the index number used in the displayed plan list.
+  Parameters: INDEX (must be a positive integer)
+  Example: uncomplete-plan 1
 
-- Non-numeric index: `Index given is non-numeric. Syntax: uncomplete-plan INDEX`
-
-- Not a valid index: `No plans at given index. Syntax: uncomplete-plan INDEX`
+- Index given is out of bound: `No plans at given index.`
 
 ### Deleting a Plan : `delete-plan`
 

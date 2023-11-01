@@ -33,7 +33,7 @@ public class UncompletePlanCommandTest {
         UncompletePlanCommand uncompletePlanCommand = new UncompletePlanCommand(INDEX_FIRST_PLAN);
 
         String expectedMessage = String.format(UncompletePlanCommand.MESSAGE_UNCOMPLETE_PLAN_SUCCESS,
-                Messages.format(planToUncomplete));
+                planToUncomplete.getPlanName());
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.completePlan(planToUncomplete);
@@ -46,7 +46,7 @@ public class UncompletePlanCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPlanList().size() + 1);
         UncompletePlanCommand uncompletePlanCommand = new UncompletePlanCommand(outOfBoundIndex);
 
-        assertCommandFailure(uncompletePlanCommand, model, Messages.MESSAGE_INVALID_PLAN_DISPLAYED_INDEX);
+        assertCommandFailure(uncompletePlanCommand, model, Messages.MESSAGE_OUT_OF_BOUND_PLAN_INDEX);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class UncompletePlanCommandTest {
 
         UncompletePlanCommand uncompletePlanCommand = new UncompletePlanCommand(outOfBoundIndex);
 
-        assertCommandFailure(uncompletePlanCommand, model, Messages.MESSAGE_INVALID_PLAN_DISPLAYED_INDEX);
+        assertCommandFailure(uncompletePlanCommand, model, Messages.MESSAGE_OUT_OF_BOUND_PLAN_INDEX);
     }
 
     @Test

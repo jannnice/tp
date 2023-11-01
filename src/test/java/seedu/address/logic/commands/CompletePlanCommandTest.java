@@ -33,7 +33,7 @@ public class CompletePlanCommandTest {
         CompletePlanCommand completePlanCommand = new CompletePlanCommand(INDEX_FIRST_PLAN);
 
         String expectedMessage = String.format(CompletePlanCommand.MESSAGE_COMPLETE_PLAN_SUCCESS,
-                Messages.format(planToComplete));
+                planToComplete.getPlanName());
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.completePlan(planToComplete);
@@ -46,7 +46,7 @@ public class CompletePlanCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPlanList().size() + 1);
         CompletePlanCommand completePlanCommand = new CompletePlanCommand(outOfBoundIndex);
 
-        assertCommandFailure(completePlanCommand, model, Messages.MESSAGE_INVALID_PLAN_DISPLAYED_INDEX);
+        assertCommandFailure(completePlanCommand, model, Messages.MESSAGE_OUT_OF_BOUND_PLAN_INDEX);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class CompletePlanCommandTest {
 
         CompletePlanCommand completePlanCommand = new CompletePlanCommand(outOfBoundIndex);
 
-        assertCommandFailure(completePlanCommand, model, Messages.MESSAGE_INVALID_PLAN_DISPLAYED_INDEX);
+        assertCommandFailure(completePlanCommand, model, Messages.MESSAGE_OUT_OF_BOUND_PLAN_INDEX);
     }
 
     @Test

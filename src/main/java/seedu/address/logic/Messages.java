@@ -27,6 +27,8 @@ public class Messages {
     public static final String MESSAGE_UNCLEAR_COMMAND =
                 "Command is unclear. Please specify with \"-friend\" or \"-plan\"!";
     public static final String MESSAGE_INVALID_PLAN_DISPLAYED_INDEX = "The plan index provided is invalid";
+    public static final String MESSAGE_OUT_OF_BOUND_PLAN_INDEX = "No plans at given index.";
+
     public static final String MESSAGE_PERSON_PRESENT_IN_PLAN = "This person is involved in plans!";
     public static final String MESSAGE_PLANS_LISTED_OVERVIEW = "%1$d plans listed!";
 

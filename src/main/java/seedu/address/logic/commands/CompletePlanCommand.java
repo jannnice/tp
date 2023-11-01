@@ -24,7 +24,7 @@ public class CompletePlanCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_COMPLETE_PLAN_SUCCESS = "Completed Plan: %1$s";
+    public static final String MESSAGE_COMPLETE_PLAN_SUCCESS = "\"%1$s\" is marked as completed";
 
     private final Index targetIndex;
 
@@ -38,13 +38,13 @@ public class CompletePlanCommand extends Command {
         List<Plan> lastShownList = model.getFilteredPlanList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PLAN_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_OUT_OF_BOUND_PLAN_INDEX);
         }
 
         Plan planToComplete = lastShownList.get(targetIndex.getZeroBased());
         model.completePlan(planToComplete);
         model.updateFilteredPlanList(PREDICATE_SHOW_ALL_PLANS);
-        return new CommandResult(String.format(MESSAGE_COMPLETE_PLAN_SUCCESS, Messages.format(planToComplete)));
+        return new CommandResult(String.format(MESSAGE_COMPLETE_PLAN_SUCCESS, planToComplete.getPlanName()));
     }
 
     @Override
