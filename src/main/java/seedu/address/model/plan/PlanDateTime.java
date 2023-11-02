@@ -15,7 +15,7 @@ public class PlanDateTime {
     public static final String MESSAGE_INVALID_DATETIME = "Date-Time given is invalid.\n";
 
     public static final String MESSAGE_CONSTRAINTS = MESSAGE_INVALID_DATETIME + " "
-            + "Date Time must be in YYYY-MM-DD-HH:MM format";
+            + "Date-Time must be in YYYY-MM-DD-HH:MM format";
 
     public static final String FUTURE_MESSAGE_CONSTRAINT = MESSAGE_INVALID_DATETIME
             + "Ensure that the Date-Time provided is not in the past.";

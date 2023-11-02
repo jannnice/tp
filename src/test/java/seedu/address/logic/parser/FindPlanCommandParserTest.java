@@ -16,7 +16,7 @@ public class FindPlanCommandParserTest {
     @Test
     public void parse_emptyArg_throwsParseException() {
         assertParseFailure(parser, "     ",
-                String.format(MESSAGE_MISSING_ARGUMENTS, FindPlanCommand.MESSAGE_SYNTAX));
+                String.format(MESSAGE_MISSING_ARGUMENTS, FindPlanCommand.MESSAGE_USAGE));
     }
 
     @Test

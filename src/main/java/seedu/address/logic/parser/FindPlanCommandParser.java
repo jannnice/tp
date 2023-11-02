@@ -20,7 +20,7 @@ public class FindPlanCommandParser implements Parser<FindPlanCommand> {
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_MISSING_ARGUMENTS, FindPlanCommand.MESSAGE_SYNTAX));
+                    String.format(MESSAGE_MISSING_ARGUMENTS, FindPlanCommand.MESSAGE_USAGE));
         }
 
         return new FindPlanCommand(new Name(trimmedArgs));

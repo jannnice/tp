@@ -45,7 +45,6 @@ public class EditPlanCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PLAN = "This plan already exists in the FriendBook.";
     public static final String MESSAGE_FRIEND_NOT_FOUND = "The friend does not exist in the FriendBook";
-
     private final Index index;
     private final EditPlanDescriptor editPlanDescriptor;
 

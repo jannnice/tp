@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-FriendBook is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, FriendBook can get your plans management done faster than traditional GUI apps.
+FriendBook is a **desktop app for managing friend contacts and plan details, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, FriendBook can get your plans management done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -28,6 +28,8 @@ FriendBook is a **desktop app for managing contacts, optimized for use via a Com
    * `list-friend` : Lists all contacts.
 
    * `add-friend n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the FriendBook.
+
+   * `add-plan n/Meeting d/2023-11-01-10:00 f/John Doe` : Adds a plan named `Meeting` with `John Doe` to the FriendBook
 
    * `delete-friend 3` : Deletes the 3rd contact shown in the current list.
 
@@ -78,7 +80,7 @@ Arguments:
 
 Successful Output:
 
-`New friend added: [NAME, PHONE_NUMBER, EMAIL, ADDRESS]`
+`New friend added: NAME, PHONE_NUMBER, EMAIL, ADDRESS`
 
 Unsuccessful Output:
 
@@ -143,7 +145,7 @@ Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
-- Empty index or index is not a integer: `Invalid command format!
+- Empty index or index is not a integer: `Invalid command.
   delete-friend: Deletes the friend identified by the index number used in the displayed friend list.
   Parameters: INDEX (must be a positive integer)
   Example: delete-friend 1`
@@ -165,11 +167,11 @@ Examples:
 * `find-friend alex david` returns `Alex Yeoh`, `David Li`
 
 Successful Output:
-`[COUNT_OF_PLANS] friends listed!`
+`COUNT_OF_FRIENDS friends listed!`
 
 Unsuccessful Output:
 - Invalid command: `Invalid command.` + help message with list of all commands
-- Empty arguments: `Invalid command format!
+- Empty arguments: `Invalid syntax: Missing arguments.
   find-friend: Finds all friends whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
   Parameters: KEYWORD [MORE_KEYWORDS]...
   Example: find-friend alice bob charlie`
@@ -235,15 +237,15 @@ Arguments:
 
 Successful Output:
 
-`Edited Plan: [PLAN_NAME]; Date Time: [DATE_TIME]; Friend: [FRIEND_NAME]`
+`Edited Plan: PLAN_NAME with FRIEND_NAME at DATE_TIME`
 
 Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
-- Invalid index is given: `Index given is invalid. Syntax: edit-plan INDEX n/PLAN_NAME d/DATE_TIME f/FRIEND_NAME`
+- Invalid index is given: `The plan index provided is invalid`
 
-- No optional arguments provided: `Missing information to be updated. Syntax: edit-plan INDEX n/PLAN_NAME d/DATE_TIME f/FRIEND_NAME`
+- No optional arguments provided: `At least one field to edit must be provided.`
 
 - Not a valid friend: `The friend does not exist in the FriendBook.`
 
@@ -290,7 +292,8 @@ Arguments:
 
 Successful Output:
 
-`"[PLAN_NAME]" is marked as not completed.`
+
+`Completed Plan: [PLAN_NAME]; Date Time: [DATE_TIME]; Friend: [FRIEND_NAME]`
 
 Unsuccessful Output:
 
@@ -315,20 +318,17 @@ Examples:
 Arguments:
 
 - `INDEX` must be an INTEGER
+- `INDEX` must be defined within the size of current PlanList
 
 Successful Output:
 
-`[PLAN_NAME] is deleted.`
+`Deleted Plan: PLAN_NAME with FRIEND_NAME at DATE_TIME`
 
 Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
-- Missing arguments: `Invalid syntax: Missing arguments. Syntax: delete-plan INDEX`
-
-- Non-numeric index: `Index given is non-numeric. Syntax: delete-plan INDEX`
-
-- Not a valid index: `No plans at given index. Syntax: delete-plan INDEX`
+- Invalid index is given: `The plan index provided is invalid`
 
 ### Finding a plan : `find-plan`
 
@@ -349,13 +349,16 @@ Arguments:
 - `FRIEND_NAME` must be the full name belonging to a Person saved in the FriendBook
 
 Successful Output:
-`[COUNT_OF_PLANS] plans listed!`
+`COUNT_OF_PLANS plans listed!`
 
 Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
-- Missing arguments: `Invalid syntax: Missing arguments. Syntax: find-plan FRIEND_NAME`
+- Missing arguments: `Invalid syntax: Missing arguments.
+  find-plan: Finds all plans which contains the specified friend.
+  Parameters: FRIEND_NAME
+  Example: find-plan Elijah Chia`
 
 - Not a valid friend: `The friend does not exist in the FriendBook.`
 
@@ -366,14 +369,14 @@ Shows a list of all plans in the FriendBook.
 Format: `list-plan`
 
 Successful Output:
-`[COUNT_OF_PLANS] plans listed!`
+`Listed all plans`
 
 Unsuccessful Output:
 
 - Invalid command: `Invalid command.` + help message with list of all commands
 
 ### Clearing the Storage : `clear`
-Clears the stored friends and plans on `./data/friendbook.json`
+Clears the stored friends and plans on the `friendbook.json` file which is located in the `data` folder in FriendBook's home folder.
 
 ### Get the User Guide : `help`
 Provides the FriendBook user guide's link.
@@ -392,10 +395,6 @@ FriendBook data are saved automatically as a JSON file `[JAR file location]/data
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, FriendBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </div>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 

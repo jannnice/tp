@@ -63,7 +63,9 @@ public class UniquePlanList implements Iterable<Plan> {
         } else {
             for (Plan plan : internalList) {
                 if (plan.equals(toComplete)) {
+                    int index = internalList.indexOf(toComplete);
                     plan.setCompleted();
+                    internalList.set(index, plan);
                 }
             }
         }
@@ -80,7 +82,9 @@ public class UniquePlanList implements Iterable<Plan> {
         } else {
             for (Plan plan : internalList) {
                 if (plan.equals(toUncomplete)) {
+                    int index = internalList.indexOf(toUncomplete);
                     plan.setUncompleted();
+                    internalList.set(index, plan);
                 }
             }
         }
